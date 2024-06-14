@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View, Animated } from 'react-native'
+import { StyleSheet, Image, View, Animated, Text } from 'react-native'
 import React, { useEffect, useState, useRef } from 'react'
 
 const SplashScreen  = () => {
@@ -15,13 +15,13 @@ const SplashScreen  = () => {
   return (
     <View  style={styles.container}>
         <Animated.Image 
-            source={require('../images/URBEX.png')}
+            source={require('../images/urbex21.png')}
             style={{ opacity:imageOpacity }}
         />
-        <Image 
+        <Image         
         source={require('../images/a&j.png')}
         style={styles.bottomRightImage}
-        />      
+        />             
     </View>
   )
 }

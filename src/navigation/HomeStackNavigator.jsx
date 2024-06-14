@@ -10,12 +10,12 @@ const Stack = createNativeStackNavigator()
 const HomeStackNavigator = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Init"
             screenOptions={{
                 headerShown: false,                
             }}
         >
-            <Stack.Screen component={Home} name="Home" />
+            <Stack.Screen component={Home} name="Init" />
             {/* <Stack.Screen
                 component={ItemListCategory}
                 name="ItemListCategory"

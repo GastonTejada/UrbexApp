@@ -23,5 +23,6 @@ export const colors = {
     beige      : '#D98D62',
     brown      : '#A64521',
     darkbrown  : '#A6442E',
-    chocolate  : '#59281D'
+    chocolate  : '#59281D',
+    board      : '#520120'
 }

@@ -1,20 +1,24 @@
+import 'react-native-gesture-handler';
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import { colors } from '../constants/colors'
+import { FontAwesome6 } from '@expo/vector-icons';
+// import DrawerNavigator from "../navigation/DrawerNavigation"
 // import { useSelector } from 'react-redux'
 // import Avatar from './Avatar'
 
-
-const Header = ({route},{title}) => {
+const Header = ({route}) => {
   
 //   const categorySelected = useSelector(state => state.shop.value.categorySelected)
   
   return (
-    <View style = {styles.container}>
+    <View style = {styles.container}> 
       <Image
-          source={require('../images/urbex2.png')}
+          source={require('../images/urbe22.png')}
           style={styles.logo}
       />      
+      <Text style = {styles.text}>Comunidades</Text>
+      {/* <FontAwesome6 name="building-user" size={20} color="white" /> */}
       {/* <Text style = {styles.text}>{route.name}</Text>   */}
       {/* <Avatar/> */}
     </View>
@@ -27,24 +31,26 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     width: '100%',
-    height: 40,
-    backgroundColor: colors.darkbrown,    
+    height: 45,
+    backgroundColor: '#520120',
     alignItems: 'center',
-    borderBottomColor: colors.chocolate,
+    borderBottomColor: colors.gray,
     borderBottomWidth: 2,
     justifyContent: 'center',
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,    
   },
   logo:{
     width: 100,
     height: 20,
-    marginLeft: 15,    
+    marginLeft: 8,    
     justifyContent: 'center',
-    color: '#fff',
-    backgroundImage: 'linear-gradient(to right, #fff, #f8f8f8)',
+    color: '#fff',  
   },
   text: {    
     color: colors.white,
-    fontSize: 30,    
+    fontSize: 15,    
+    marginLeft: 5,
+    fontWeight: 'bold',
+    color:  colors.white // '#737373'
   }
 })
