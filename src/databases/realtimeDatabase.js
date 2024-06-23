@@ -1,0 +1,1 @@
+export const baseUrl = "https://urbexapp-9db01-default-rtdb.firebaseio.com/"

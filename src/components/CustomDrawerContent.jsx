@@ -5,6 +5,7 @@ import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawe
 import { colors } from '../constants/colors'
 import { Entypo } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const CustomDrawerContent = (props) => {
   return (
@@ -21,7 +22,11 @@ const CustomDrawerContent = (props) => {
                   <View style={styles.locationContainer}> 
                       <Entypo name="location" size={18} color="white" />
                       <Text style={styles.footerText}> Pellegrini 833 PA, Rosario</Text>  
-                  </View>  
+                  </View>
+                  <View style={styles.webContainer}>
+                      <MaterialCommunityIcons name="web" size={18} color="white" />
+                      <Text style={styles.footerText}>www.ayjsistemas.com/</Text>  
+                  </View>
                   <View style={styles.mailContainer}> 
                       <Entypo name="mail" size={18} color="white" />
                       <Text style={styles.footerText}>info@ayjsistemas.com</Text>  
@@ -102,6 +107,10 @@ const styles = StyleSheet.create({
   },
   locationContainer: {
     flexDirection: 'row',
+    gap: 5
+  },
+  webContainer: {
+    flexDirection: 'row',    
     gap: 5
   },
   mailContainer: {

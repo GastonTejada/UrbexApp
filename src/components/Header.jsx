@@ -51,6 +51,5 @@ const styles = StyleSheet.create({
     fontSize: 15,    
     marginLeft: 5,
     fontWeight: 'bold',
-    color:  colors.white // '#737373'
   }
 })
