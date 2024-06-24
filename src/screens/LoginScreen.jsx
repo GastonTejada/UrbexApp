@@ -71,7 +71,7 @@ const LoginScreen = ({ navigation }) => {
                     isSecure={true}
                 />
                 <SubmitButton onPress={onSubmit} title="Enviar" />
-                <Text style={styles.sub}>No tengo cuenta</Text>
+                <Text style={styles.sub}>¿No tienes cuenta?</Text>
                 <Pressable onPress={() => navigation.navigate("Signup")}>
                     <Text style={styles.subLink}>Registrate</Text>
                 </Pressable>
