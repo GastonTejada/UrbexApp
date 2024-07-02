@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { colors } from '../constants/colors'
 import { Entypo } from '@expo/vector-icons';
@@ -15,8 +15,15 @@ const CustomDrawerContent = (props) => {
             <Text style={styles.title}>Comunidades</Text>
         </View>
         <DrawerItemList {...props} />
+        {/* <TouchableOpacity
+          style={styles.drawerItem}
+          onPress={() => {
+            props.navigation.navigate('Inicio', { screen: 'MyProfile' });
+          }}
+          >
+          <Text style={styles.drawerLabel}>Perfil</Text>
+        </TouchableOpacity> */}
         <View style={styles.footerContainer}>
-
           <View style={styles.footer}>        
               <View style={styles.containerFooterText}> 
                   <View style={styles.locationContainer}> 
@@ -40,7 +47,7 @@ const CustomDrawerContent = (props) => {
                       <Text style={styles.footerText}>/Sistemas.AyJ</Text> 
                   </View>   
               </View>              
-              <Image source={require('../images/a&j.png')} style={styles.logoFooter} />        
+              <Image source={require('../images/ayj.png')} style={styles.logoFooter} />        
           </View>        
         </View>
     </DrawerContentScrollView>

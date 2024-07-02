@@ -1,12 +1,13 @@
+
 import * as SQLite from "expo-sqlite"
 import { Platform } from "react-native"
 
-let db = null
-if (Platform.OS !== 'web') db =  SQLite.openDatabase("sessions.db")
+let db = null;
+if (Platform.OS !== 'web') db =  SQLite.openDatabaseSync("sessions.db")
 
 export const initSQLiteDB = () => {    
     const promise = new Promise((resolve, reject) => {
-        db.transaction((tx) => {
+        db.isInTransactionAsync((tx) => {
             //Define SQL statement. BEWARE of PARENTHESIS
             tx.executeSql(
                 "CREATE TABLE IF NOT EXISTS sessions (localId TEXT PRIMARY KEY NOT NULL, email TEXT NOT NULL, token TEXT NOT NULL);",
@@ -16,7 +17,6 @@ export const initSQLiteDB = () => {
             )
         })
     })
-    console.log("will return promise")
     return promise
 }
 
@@ -26,7 +26,7 @@ export const insertSession = ({
     token
 }) => {
     const promise = new Promise((resolve, reject) => {
-        db.transaction((tx) => {
+        db.isInTransactionAsync((tx) => {
             //Define SQL statement. BEWARE of PARENTHESIS
             tx.executeSql(
                 'INSERT INTO sessions (localId, email, token) VALUES (?, ?, ?);',
@@ -36,12 +36,13 @@ export const insertSession = ({
             )
         })
     })
+    console.log(promise);
     return promise
 }
 
 export const getSession = () => {
     const promise = new Promise((resolve, reject) => {
-        db.transaction((tx) => {
+        db.isInTransactionAsync((tx) => {
             //Define SQL statement. BEWARE of PARENTHESIS
             tx.executeSql(
                 'SELECT * from sessions',
@@ -57,7 +58,7 @@ export const getSession = () => {
 
 export const dropSessionsTable = () => {
     const promise = new Promise((resolve, reject) => {
-        db.transaction((tx) => {
+        db.isInTransactionAsync((tx) => {
             //Define SQL statement. BEWARE of PARENTHESIS
             tx.executeSql(
                 "DROP TABLE IF EXISTS sessions",
@@ -66,13 +67,12 @@ export const dropSessionsTable = () => {
             )
         })
     })
-    console.log("will return promise")
     return promise
 }
 
 export const truncateSessionsTable = () => {
     const promise = new Promise((resolve, reject) => {
-        db.transaction((tx) => {
+        db.isInTransactionAsync((tx) => {
             //Define SQL statement. BEWARE of PARENTHESIS
             tx.executeSql(
                 "DELETE FROM sessions",
@@ -82,6 +82,5 @@ export const truncateSessionsTable = () => {
             )
         })
     })
-    console.log("will return promise")
     return promise
 }

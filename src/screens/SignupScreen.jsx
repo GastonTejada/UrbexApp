@@ -15,6 +15,7 @@ const SignupScreen = ({ navigation }) => {
     const [errorPassword, setErrorPassword] = useState("")
     const [confirmPassword, setconfirmPassword] = useState("");
     const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
+    const [isPasswordSecure, setIsPasswordSecure] = useState(true);
 
     const dispatch = useDispatch()
 
@@ -30,6 +31,10 @@ const SignupScreen = ({ navigation }) => {
             )
         }
     }, [result])
+
+    const togglePasswordVisibility = () => {
+        setIsPasswordSecure(!isPasswordSecure);
+    };    
 
     const onSubmit = () => {
         try {
@@ -73,19 +78,25 @@ const SignupScreen = ({ navigation }) => {
                     label={"password"}
                     onChange={setPassword}
                     error={errorPassword}
-                    isSecure={true}
+                    // isSecure={true}
+                    isSecure={isPasswordSecure}
+                    togglePasswordVisibility={togglePasswordVisibility}
                 />
                 <InputForm
                     label={"confirm password"}
                     onChange={setconfirmPassword}
                     error={errorConfirmPassword}
-                    isSecure={true}
+                    // isSecure={true}
+                    isSecure={isPasswordSecure}
+                    togglePasswordVisibility={togglePasswordVisibility}
                 />
                 <SubmitButton onPress={onSubmit} title="Enviar" />
-                <Text style={styles.sub}>¿Ya tienes una cuenta?</Text>
-                <Pressable onPress={() => navigation.navigate("Login")}>
-                    <Text style={styles.subLink}>Inciar sesión</Text>
-                </Pressable>
+                <View style={styles.containerSub}>     
+                    <Text style={styles.sub}>¿Ya tienes una cuenta?</Text>
+                    <Pressable onPress={() => navigation.navigate("Login")}>
+                        <Text style={styles.subLink}>Inciar sesión</Text>
+                    </Pressable>
+                </View>    
             </View>            
         </View>
     );
@@ -127,6 +138,14 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontFamily: "Josefin",
         color: colors.black,
+    },
+    containerSub: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 5,
+        position: 'absolute',
+        bottom: -80,
     },
     sub: {
         fontSize: 16,

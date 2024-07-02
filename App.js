@@ -1,10 +1,21 @@
 import "react-native-gesture-handler";
+import React from 'react';
 import { StyleSheet, Platform, SafeAreaView, StatusBar } from 'react-native';
 import Navigator from "./src/navigation/Navigator"
 import { Provider } from "react-redux"
 import store  from "./src/store/index"
+import { initSQLiteDB } from "./src/persistence"
 import { colors } from "./src/constants/colors"
 import { useFonts } from "expo-font"
+
+(async ()=> {
+  try {
+      if (Platform.OS !== 'web') {
+          const response = await initSQLiteDB()
+      }
+  } catch (error) {    
+  }
+})()
 
 export default function App() {
 

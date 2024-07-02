@@ -3,6 +3,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { TouchableOpacity, View, StyleSheet, Text, Image } from 'react-native';
 import BottomTabNavigator from "./BottomTabNavigator";
 import MyProfile from "../screens/MyProfile";
+import MyProfileStack from './MyProfileStackNavigator'
 import AboutUs from "../screens/AboutUs";
 import CustomDrawerContent from '../components/CustomDrawerContent';
 import Avatar from '../components/Avatar';
@@ -13,13 +14,14 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Importa 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
+
   return (
     <Drawer.Navigator
       drawerContent={props => <CustomDrawerContent {...props} />}
-      screenOptions={({ navigation }) => ({
+      screenOptions={({ navigation }) => ({        
         headerStyle: {
           backgroundColor: colors.board,
-        },
+        },        
         headerTitle: () => (
           <View style={styles.headerTitleContainer}>
             <View style={styles.logoContainer}>
@@ -42,8 +44,8 @@ const DrawerNavigation = () => {
         headerTitleAlign: 'center',
       })}
     >
-      <Drawer.Screen name="Init"               component={BottomTabNavigator} />
-      <Drawer.Screen name="Perfil"             component={MyProfile} />
+      <Drawer.Screen name="Inicio"             component={BottomTabNavigator} />
+      <Drawer.Screen name="Perfil"             component={MyProfileStack} />            
       <Drawer.Screen name="Acerca de nosotros" component={AboutUs} />
     </Drawer.Navigator>
   );
